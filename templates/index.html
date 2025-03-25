@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng Dụng Thời Tiết</title>
+</head>
+<body>
+    <h1>Ứng Dụng Thời Tiết</h1>
+    
+    <form method="POST">
+        <label for="city_name">Nhập tên thành phố:</label>
+        <input type="text" id="city_name" name="city_name" required>
+        <button type="submit">Lấy thời tiết</button>
+    </form>
+
+    {% if weather_data %}
+        <h2>Thời tiết tại {{ weather_data.location_name }} vào lúc {{ weather_data.time }}</h2>
+        <ul>
+            <li>Nhiệt độ: {{ weather_data.temperature }} °C</li>
+            <li>Mô tả: {{ weather_data.weather_description }}</li>
+            <li>Độ ẩm: {{ weather_data.humidity }}%</li>
+            <li>Tốc độ gió: {{ weather_data.wind_speed }} m/s</li>
+        </ul>
+    {% endif %}
+    
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
